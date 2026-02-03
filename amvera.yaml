@@ -5,13 +5,3 @@ meta:
     version: latest
 build:
   dockerfile: Dockerfile
-  # Пробрасываем лимит памяти прямо в процесс сборки Docker
-  args:
-    NODE_OPTIONS: "--max-old-space-size=1536"
-run:
-  # Указываем порт, который ожидает Moltbot
-  port: 18789
-  # Если боту нужно сохранять данные (базу), лучше добавить папку
-  persistence:
-    - mountPath: /data
-      name: data
