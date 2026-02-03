@@ -5,3 +5,16 @@ meta:
     version: latest
 build:
   dockerfile: Dockerfile
+meta:
+  environment: node
+  toolchain:
+    name: npm
+    version: 22
+build:
+  args:
+    - NODE_OPTIONS=--max-old-space-size=1536
+run:
+  persistence:
+    - mountPath: /data
+      name: data
+  port: 18789
