@@ -45,7 +45,8 @@ USER node
 # For container platforms requiring external health checks:
 #   1. Set OPENCLAW_GATEWAY_TOKEN or OPENCLAW_GATEWAY_PASSWORD env var
 #   2. Override CMD: ["node","dist/index.js","gateway","--allow-unconfigured","--bind","lan"]
-CMD ["sh", "-c", "export HOST=0.0.0.0 && node dist/index.js gateway --allow-unconfigured"]
+CMD ["sh", "-c", "node dist/index.js gateway --allow-unconfigured & sleep 5 && sed -i 's/127.0.0.1/0.0.0.0/g' /home/node/.openclaw/config.yaml 2>/dev/null && pkill -f node && node dist/index.js gateway --allow-unconfigured"]
+
 
 
 
